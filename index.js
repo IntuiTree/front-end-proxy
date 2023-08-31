@@ -13,11 +13,11 @@ app.use(cors({
 app.use('/', createProxyMiddleware({
     target: 'https://intuitree.io:8000',
     changeOrigin: true,
-    pathRewrite: {
-        '^/': '/', // remove base path
+    onProxyReq: (proxyReq) => {
+        // Set the header before the proxy request is made
+        proxyReq.setHeader('x-requested-from', 'CLIENT_DEV');
     },
     onProxyRes: (proxyRes) => {
-        // console.log(proxyRes)
         // Remove the strict-origin-when-cross-origin Referrer-Policy which can block referrer from being sent.
         proxyRes.headers['referrer-policy'] = 'no-referrer-when-downgrade';
         
