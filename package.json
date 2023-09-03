@@ -4,7 +4,8 @@
   "description": "Simple proxy to work around CORS when doing local dev",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "Jonathon Greene",
   "license": "MIT",
